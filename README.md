@@ -2,6 +2,8 @@
 
 Double-click command to present a shortcut guide for your macOS application.
 
+![Example-1.png](https://raw.githubusercontent.com/Lessica/ShortcutGuide/main/Screenshots/Example-1.png)
+
 ## Usage
 
 Add these lines to your root window's `NSWindowController`:
