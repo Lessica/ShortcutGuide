@@ -28,7 +28,8 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
     private var columnStyle: ShortcutGuideColumnStyle = .dual
     private var isSinglePage: Bool { arrangedObjects.count <= 1 }
 
-    func prepareForPresentation(columnStyle style: ShortcutGuideColumnStyle) {
+    func prepareForPresentation(window: NSWindow, columnStyle style: ShortcutGuideColumnStyle) {
+        attachedWindow = window
         columnStyle = style
         if let items = items, items.count > 0 {
             let maximumCount = style == .dual ? 16 : 8
@@ -55,7 +56,7 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
         return maskImage
     }
 
-    weak var attachedWindow: NSWindow?
+    private weak var attachedWindow: NSWindow?
 
     private func centerInScreenForWindow(_ parent: NSWindow?) {
         if let window = view.window, let screen = parent?.screen ?? window.screen {
