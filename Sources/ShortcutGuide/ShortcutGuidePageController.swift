@@ -127,13 +127,12 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
     func pageController(_ pageController: NSPageController, prepare viewController: NSViewController, with object: Any?) {
         guard object != nil, let ctrl = viewController as? ShortcutGuideViewController else { return }
         ctrl.updateDisplayWithItems((object as! ShortcutItemGroup).items)
+        ctrl.isSinglePage = isSinglePage
         ctrl.view.needsUpdateConstraints = true
     }
 
     func pageController(_ pageController: NSPageController, viewControllerForIdentifier identifier: NSPageController.ObjectIdentifier) -> NSViewController {
-        let ctrl = self.storyboard!.instantiateController(withIdentifier: "ShortcutGuideViewController") as! ShortcutGuideViewController
-        ctrl.isSinglePage = isSinglePage
-        return ctrl
+        return self.storyboard!.instantiateController(withIdentifier: "ShortcutGuideViewController") as! ShortcutGuideViewController
     }
 
     func pageController(_ pageController: NSPageController, identifierFor object: Any) -> NSPageController.ObjectIdentifier {

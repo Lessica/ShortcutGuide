@@ -34,13 +34,13 @@ internal class ShortcutGuidePageControl: NSView {
         }
     }
 
-    var pageIndicatorTintColor: NSColor = NSColor(white: 1.0, alpha: 0.5) {
+    var pageIndicatorTintColor: NSColor = NSColor.labelColor.withAlphaComponent(0.5) {
         didSet {
             needsDisplay = true
         }
     }
 
-    var currentPageIndicatorTintColor: NSColor = NSColor.white {
+    var currentPageIndicatorTintColor: NSColor = NSColor.labelColor {
         didSet {
             needsDisplay = true
         }
