@@ -16,6 +16,13 @@ public struct ShortcutItem {
         self.modifierFlags = modifierFlags
     }
 
+    public init(name: String, keyString: ShortcutItem.KeyboardCharacter, toolTip: String, modifierFlags: NSEvent.ModifierFlags) {
+        self.name = name
+        self.keyString = keyString.rawValue
+        self.toolTip = toolTip
+        self.modifierFlags = modifierFlags
+    }
+
     public let name: String
     public let keyString: String
     public let toolTip: String
