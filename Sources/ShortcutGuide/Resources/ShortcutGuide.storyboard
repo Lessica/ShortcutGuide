@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="729" height="288"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="VMS-4Z-sU7" customClass="ShortcutGuidePageControl" customModule="ShortcutGuide">
-                                <rect key="frame" x="20" y="12" width="689" height="16"/>
+                                <rect key="frame" x="20" y="16" width="689" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="U9r-Qa-XD5"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                         <constraints>
                             <constraint firstAttribute="width" priority="250" constant="384" id="41Q-Jl-nuD"/>
                             <constraint firstItem="VMS-4Z-sU7" firstAttribute="centerX" secondItem="vPl-IC-BrD" secondAttribute="centerX" id="G4j-kL-9Km"/>
-                            <constraint firstAttribute="bottom" secondItem="VMS-4Z-sU7" secondAttribute="bottom" constant="12" id="Rv1-gs-ZAJ"/>
+                            <constraint firstAttribute="bottom" secondItem="VMS-4Z-sU7" secondAttribute="bottom" constant="16" id="Rv1-gs-ZAJ"/>
                             <constraint firstAttribute="height" priority="250" constant="312" id="bzv-Me-fOK"/>
                             <constraint firstItem="VMS-4Z-sU7" firstAttribute="leading" secondItem="vPl-IC-BrD" secondAttribute="leading" constant="20" symbolic="YES" id="uHg-0U-eQh"/>
                         </constraints>
@@ -64,11 +64,11 @@
         <scene sceneID="37p-48-Q1E">
             <objects>
                 <viewController storyboardIdentifier="ShortcutGuideViewController" id="tuv-4K-x5H" customClass="ShortcutGuideViewController" customModule="ShortcutGuide" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lq0-x9-Ocp">
-                        <rect key="frame" x="0.0" y="0.0" width="753" height="300"/>
+                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="Lq0-x9-Ocp">
+                        <rect key="frame" x="0.0" y="0.0" width="753" height="312"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAX-5F-0Uy">
-                                <rect key="frame" x="32" y="32" width="689" height="248"/>
+                                <rect key="frame" x="32" y="40" width="689" height="248"/>
                                 <subviews>
                                     <textField hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7e6-wK-wsY">
                                         <rect key="frame" x="-2" y="232" width="693" height="16"/>
@@ -2095,10 +2095,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="XAX-5F-0Uy" firstAttribute="centerX" secondItem="Lq0-x9-Ocp" secondAttribute="centerX" id="318-Uo-hej"/>
-                            <constraint firstItem="XAX-5F-0Uy" firstAttribute="top" secondItem="Lq0-x9-Ocp" secondAttribute="top" constant="32" id="JbX-ug-8G1"/>
-                            <constraint firstItem="XAX-5F-0Uy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Lq0-x9-Ocp" secondAttribute="leading" constant="32" id="SIs-bD-b3S"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="bottom" constant="32" id="Zkf-I7-0pO"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="trailing" constant="32" id="jFp-sE-QzI"/>
+                            <constraint firstItem="XAX-5F-0Uy" firstAttribute="top" secondItem="Lq0-x9-Ocp" secondAttribute="top" constant="24" id="JbX-ug-8G1"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="bottom" priority="990" constant="40" id="Zkf-I7-0pO"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="trailing" priority="990" constant="32" id="jFp-sE-QzI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2122,7 +2121,6 @@
                         <outlet property="itemWrapperView7" destination="XEp-cZ-R8h" id="xOb-gY-VTl"/>
                         <outlet property="itemWrapperView8" destination="tHe-cf-LP2" id="u1k-FC-dr0"/>
                         <outlet property="itemWrapperView9" destination="mY6-SI-zTa" id="huj-lR-bQw"/>
-                        <outlet property="leadingConstraint" destination="SIs-bD-b3S" id="gZd-Fs-OVp"/>
                         <outlet property="nothingLabel" destination="7e6-wK-wsY" id="hbc-Ae-eaw"/>
                         <outlet property="pageStackView" destination="bky-h7-Ucd" id="8yT-3e-B0d"/>
                         <outlet property="stackView" destination="XAX-5F-0Uy" id="r7b-Ul-qNh"/>

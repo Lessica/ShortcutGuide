@@ -40,6 +40,7 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
         selectedIndex = 0
         pageControl.numberOfPages = arrangedObjects.count
         pageControl.currentPage = 0
+        pageControl.isHidden = isSinglePage
         view.needsUpdateConstraints = true
     }
 
@@ -140,9 +141,12 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
         return (object as! ShortcutItemGroup).identifier!
     }
 
+    func pageController(_ pageController: NSPageController, didTransitionTo object: Any) {
+        pageControl.currentPage = selectedIndex
+    }
+
     func pageControllerDidEndLiveTransition(_ pageController: NSPageController) {
         completeTransition()
-        pageControl.currentPage = selectedIndex
     }
 
     override func cursorUpdate(with event: NSEvent) {

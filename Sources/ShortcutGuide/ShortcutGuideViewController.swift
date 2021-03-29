@@ -18,7 +18,6 @@ internal class ShortcutGuideViewController: NSViewController {
     @IBOutlet weak var columnStackView2    : NSStackView!
 
     @IBOutlet weak var topConstraint       : NSLayoutConstraint!
-    @IBOutlet weak var leadingConstraint   : NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint    : NSLayoutConstraint!
     @IBOutlet weak var trailingConstraint  : NSLayoutConstraint!
     
@@ -89,6 +88,20 @@ internal class ShortcutGuideViewController: NSViewController {
         }
 
         if isEmptyPage {
+            topConstraint.constant = 20
+            bottomConstraint.constant = 20
+            trailingConstraint.constant = 20
+        } else if isSinglePage {
+            topConstraint.constant = 32
+            bottomConstraint.constant = 32
+            trailingConstraint.constant = 32
+        } else {
+            topConstraint.constant = 24
+            bottomConstraint.constant = 40
+            trailingConstraint.constant = 32
+        }
+
+        if isEmptyPage {
             constraints += [
                 view.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
                 view.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 20)
@@ -98,18 +111,6 @@ internal class ShortcutGuideViewController: NSViewController {
                 view.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 32),
                 view.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 32)
             ]
-        }
-
-        if isEmptyPage {
-            topConstraint.constant = 20
-            leadingConstraint.constant = 20
-            bottomConstraint.constant = 20
-            trailingConstraint.constant = 20
-        } else {
-            topConstraint.constant = 32
-            leadingConstraint.constant = 32
-            bottomConstraint.constant = 32
-            trailingConstraint.constant = 32
         }
 
         if let pageConstraints = pageConstraints {
