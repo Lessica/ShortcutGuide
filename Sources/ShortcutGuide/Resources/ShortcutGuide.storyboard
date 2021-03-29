@@ -10,10 +10,10 @@
         <scene sceneID="4qO-LC-S9R">
             <objects>
                 <windowController id="0jU-2h-QQe" customClass="ShortcutGuideWindowController" customModule="ShortcutGuide" sceneMemberID="viewController">
-                    <window key="window" title="Shortcut Guide" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" frameAutosaveName="" tabbingMode="disallowed" titleVisibility="hidden" id="lk1-jK-zN6">
+                    <window key="window" title="Shortcut Guide" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="none" frameAutosaveName="" tabbingMode="disallowed" titleVisibility="hidden" id="lk1-jK-zN6">
                         <windowStyleMask key="styleMask" fullSizeContentView="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" ignoresCycle="YES" fullScreenNone="YES" fullScreenDisallowsTiling="YES"/>
-                        <rect key="contentRect" x="294" y="323" width="480" height="270"/>
+                        <rect key="contentRect" x="294" y="323" width="753" height="312"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
                         <connections>
                             <outlet property="delegate" destination="0jU-2h-QQe" id="E3u-8B-ACn"/>
@@ -25,17 +25,17 @@
                 </windowController>
                 <customObject id="OP3-pH-dra" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-129" y="115"/>
+            <point key="canvasLocation" x="-236" y="115"/>
         </scene>
         <!--Shortcut Guide Page Controller-->
         <scene sceneID="kIo-7E-LJt">
             <objects>
                 <pagecontroller transitionStyle="horizontalStrip" id="35k-Cw-ryr" customClass="ShortcutGuidePageController" customModule="ShortcutGuide" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="vPl-IC-BrD" customClass="NSVisualEffectView">
-                        <rect key="frame" x="0.0" y="0.0" width="729" height="288"/>
+                        <rect key="frame" x="0.0" y="0.0" width="753" height="312"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="VMS-4Z-sU7" customClass="ShortcutGuidePageControl" customModule="ShortcutGuide">
-                                <rect key="frame" x="20" y="16" width="689" height="16"/>
+                                <rect key="frame" x="20" y="16" width="713" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="U9r-Qa-XD5"/>
                                 </constraints>

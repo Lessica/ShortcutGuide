@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "ShortcutGuide",
     platforms: [
-        .macOS("10.11"),
+        .macOS(.v10_11),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -28,5 +28,8 @@ let package = Package(
         .testTarget(
             name: "ShortcutGuideTests",
             dependencies: ["ShortcutGuide"]),
+    ],
+    swiftLanguageVersions: [
+        .v5
     ]
 )

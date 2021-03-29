@@ -16,6 +16,11 @@ public enum ShortcutGuideColumnStyle {
 public class ShortcutGuideWindowController: NSWindowController {
     
     public static let shared = newShortcutGuideController()
+
+    public var animationBehavior: NSWindow.AnimationBehavior? {
+        get { window?.animationBehavior }
+        set { window?.animationBehavior = newValue ?? .default }
+    }
     
     private static func newShortcutGuideController() -> ShortcutGuideWindowController {
         let windowStoryboard = NSStoryboard(name: "ShortcutGuide", bundle: Bundle.module)
@@ -26,6 +31,9 @@ public class ShortcutGuideWindowController: NSWindowController {
     public override func awakeFromNib() {
         super.awakeFromNib()
         window?.level = .statusBar
+        window?.isOpaque = false
+        window?.backgroundColor = .clear
+        window?.animationBehavior = .default
     }
     
     private var localMonitor: Any?
@@ -41,39 +49,39 @@ public class ShortcutGuideWindowController: NSWindowController {
      any views in `ignoringViews`, the view will be hidden.
      */
     private func addCloseOnOutsideClick(ignoring ignoringViews: [NSView]? = nil) {
-        
         guard let window = window, let contentView = window.contentView else { return }
-        
         localMonitor = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown], handler: { [weak self] (event) -> NSEvent? in
-            
-            let localLoc = contentView.convert(event.locationInWindow, from: nil)
-            if !contentView.bounds.contains(localLoc) && window.isVisible == true {
-                
-                // If the click is in any of the specified views to ignore, don't hide
-                for ignoreView in ignoringViews ?? [NSView]() {
-                    let frameInWindow: NSRect = ignoreView.convert(ignoreView.bounds, to: nil)
-                    if frameInWindow.contains(event.locationInWindow) {
-                        // Abort if clicking in an ignored view
-                        return event
+            guard window.isVisible else { return event }
+            var shouldHide = false
+            if window != event.window {
+                // Click other windows
+                shouldHide = true
+            } else {
+                let localLoc = contentView.convert(event.locationInWindow, from: nil)
+                if !contentView.bounds.contains(localLoc) {
+                    // If the click is in any of the specified views to ignore, don't hide
+                    for ignoreView in ignoringViews ?? [NSView]() {
+                        let frameInWindow: NSRect = ignoreView.convert(ignoreView.bounds, to: nil)
+                        if frameInWindow.contains(event.locationInWindow) {
+                            // Abort if clicking in an ignored view
+                            return event
+                        }
                     }
+                    // Getting here means the click should hide the view
+                    shouldHide = true
                 }
-                
-                // Getting here means the click should hide the view
+            }
+            if shouldHide {
                 // Perform your hiding code here
                 self?.hide()
-                
             }
-            
             return event
             
         })
-        
         globalMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] (event) -> Void in
-            if window.isVisible == true {
-                self?.hide()
-            }
+            guard window.isVisible else { return }
+            self?.hide()
         }
-        
     }
     
     private func removeCloseOnOutsideClick() {

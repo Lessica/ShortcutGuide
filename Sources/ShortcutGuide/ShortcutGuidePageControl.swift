@@ -8,7 +8,7 @@
 
 import Cocoa
 
-internal class ShortcutGuidePageControl: NSView {
+internal class ShortcutGuidePageControl: NSControl {
 
     var numberOfPages: Int = 0 {
         didSet {
@@ -52,6 +52,8 @@ internal class ShortcutGuidePageControl: NSView {
         }
     }
 
+    private var dotRects: [CGRect]?
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         if hidesForSinglePage && numberOfPages == 1 {
@@ -74,15 +76,33 @@ internal class ShortcutGuidePageControl: NSView {
             return
         }
 
+        var rects = [CGRect]()
         guard let ctx = NSGraphicsContext.current?.cgContext else { return }
         for idx in 0..<numberOfPages {
             let indexOffset: CGFloat    = (dotWidth + dotPadding) * CGFloat(idx)
             let x: CGFloat              = minX + indexOffset
             let rect: CGRect            = NSRect(x: x, y: minY, width: dotWidth, height: dotWidth)
 
+            rects.append(rect)
             ctx.addEllipse(in: rect)
             ctx.setFillColor((idx == currentPage ? currentPageIndicatorTintColor : pageIndicatorTintColor).cgColor)
             ctx.fillPath()
         }
+        dotRects = rects
     }
+
+    override func mouseUp(with event: NSEvent) {
+        if let dotRects = dotRects {
+            let locInView = convert(event.locationInWindow, from: nil)
+            if let clickedDotIndex = dotRects.firstIndex(where: { $0.contains(locInView) }) {
+                currentPage = clickedDotIndex
+
+                if let action = action {
+                    NSApp.sendAction(action, to: self.target, from: self)
+                }
+                needsDisplay = true
+            }
+        }
+    }
+
 }
