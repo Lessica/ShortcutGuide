@@ -132,15 +132,8 @@ public class ShortcutGuideWindowController: NSWindowController {
         guard let eventWindow = event?.window else { return false }
         let now = event?.timestamp ?? Date().timeIntervalSinceReferenceDate
         if now - lastCommandPressedAt < 0.6 {
-            var items = [ShortcutItem]()
-            var responder: NSResponder? = eventWindow.firstResponder
-            while responder != nil {
-                if let thisResponder = responder as? ShortcutGuideDataSource {
-                    items.append(contentsOf: thisResponder.shortcutItems)
-                }
-                responder = responder?.nextResponder
-            }
-            ShortcutGuideWindowController.shared.items = items
+            ShortcutGuideWindowController.shared
+                .loadItemsForWindow(eventWindow)
             ShortcutGuideWindowController.shared
                 .toggleForWindow(eventWindow, columnStyle: preferredColumnStyle)
             lastCommandPressedAt = 0.0
@@ -183,6 +176,22 @@ public class ShortcutGuideWindowController: NSWindowController {
     // MARK: - Toggle
     
     public var isVisible: Bool { window?.isVisible ?? false }
+
+    private static func inspectItemsForWindow(_ extWindow: NSWindow) -> [ShortcutItem] {
+        var items = [ShortcutItem]()
+        var responder: NSResponder? = extWindow.firstResponder
+        while responder != nil {
+            if let thisResponder = responder as? ShortcutGuideDataSource {
+                items.append(contentsOf: thisResponder.shortcutItems)
+            }
+            responder = responder?.nextResponder
+        }
+        return items
+    }
+
+    public func loadItemsForWindow(_ extWindow: NSWindow) {
+        items = ShortcutGuideWindowController.inspectItemsForWindow(extWindow)
+    }
     
     public func showForWindow(_ extWindow: NSWindow, columnStyle style: ShortcutGuideColumnStyle?) {
         prepareForPresentation(window: extWindow, columnStyle: style ?? preferredColumnStyle)
