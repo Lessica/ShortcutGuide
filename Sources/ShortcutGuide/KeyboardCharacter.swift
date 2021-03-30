@@ -6,7 +6,7 @@
 //  Copyright © 2021 JST. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 extension ShortcutItem {
     public enum KeyboardCharacter: String, CaseIterable {
@@ -17,10 +17,10 @@ extension ShortcutItem {
         case shift = "⇧"
         case tab = "⇥"
         case space = "␣"
-        case backspace = "⌫"
-        case delete = "⌦"
-        case enter = "⏎"
-        case numberEnter = "⌤"
+        case delete = "⌫"
+        case deleteForward = "⌦"
+        case `return` = "⏎"
+        case numericEnter = "⌤"
         case capsLock = "⇪"
         case clear = "⌧"
         case home = "⤒"
@@ -32,7 +32,10 @@ extension ShortcutItem {
         case left = "◀"
         case right = "▶"
         case eject = "⏏"
+
         static let function = "fn"
+        static let backspace = KeyboardCharacter.delete
+        static let enter = KeyboardCharacter.return
     }
 }
 

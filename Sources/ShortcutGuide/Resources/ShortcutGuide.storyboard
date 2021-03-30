@@ -13,7 +13,7 @@
                     <window key="window" title="Shortcut Guide" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="none" frameAutosaveName="" tabbingMode="disallowed" titleVisibility="hidden" id="lk1-jK-zN6">
                         <windowStyleMask key="styleMask" fullSizeContentView="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" ignoresCycle="YES" fullScreenNone="YES" fullScreenDisallowsTiling="YES"/>
-                        <rect key="contentRect" x="294" y="323" width="753" height="312"/>
+                        <rect key="contentRect" x="294" y="323" width="64" height="64"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
                         <connections>
                             <outlet property="delegate" destination="0jU-2h-QQe" id="E3u-8B-ACn"/>
@@ -25,35 +25,31 @@
                 </windowController>
                 <customObject id="OP3-pH-dra" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-236" y="115"/>
+            <point key="canvasLocation" x="398" y="115"/>
         </scene>
         <!--Shortcut Guide Page Controller-->
         <scene sceneID="kIo-7E-LJt">
             <objects>
                 <pagecontroller transitionStyle="horizontalStrip" id="35k-Cw-ryr" customClass="ShortcutGuidePageController" customModule="ShortcutGuide" sceneMemberID="viewController">
-                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="vPl-IC-BrD" customClass="NSVisualEffectView">
-                        <rect key="frame" x="0.0" y="0.0" width="753" height="312"/>
+                    <view key="view" autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPl-IC-BrD" customClass="NSVisualEffectView">
+                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="VMS-4Z-sU7" customClass="ShortcutGuidePageControl" customModule="ShortcutGuide">
-                                <rect key="frame" x="20" y="16" width="713" height="16"/>
+                            <customView autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMS-4Z-sU7" customClass="ShortcutGuidePageControl" customModule="ShortcutGuide">
+                                <rect key="frame" x="20" y="16" width="24" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="U9r-Qa-XD5"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" priority="250" constant="384" id="41Q-Jl-nuD"/>
                             <constraint firstItem="VMS-4Z-sU7" firstAttribute="centerX" secondItem="vPl-IC-BrD" secondAttribute="centerX" id="G4j-kL-9Km"/>
                             <constraint firstAttribute="bottom" secondItem="VMS-4Z-sU7" secondAttribute="bottom" constant="16" id="Rv1-gs-ZAJ"/>
-                            <constraint firstAttribute="height" priority="250" constant="312" id="bzv-Me-fOK"/>
                             <constraint firstItem="VMS-4Z-sU7" firstAttribute="leading" secondItem="vPl-IC-BrD" secondAttribute="leading" constant="20" symbolic="YES" id="uHg-0U-eQh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="heightConstraint" destination="bzv-Me-fOK" id="m6S-B2-n3y"/>
                         <outlet property="pageControl" destination="VMS-4Z-sU7" id="aML-Qd-GFk"/>
                         <outlet property="visualEffectView" destination="vPl-IC-BrD" id="DAz-cr-i6f"/>
-                        <outlet property="widthConstraint" destination="41Q-Jl-nuD" id="08j-D2-dJd"/>
                     </connections>
                 </pagecontroller>
                 <customObject id="1dt-XS-ClA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -64,11 +60,11 @@
         <scene sceneID="37p-48-Q1E">
             <objects>
                 <viewController storyboardIdentifier="ShortcutGuideViewController" id="tuv-4K-x5H" customClass="ShortcutGuideViewController" customModule="ShortcutGuide" sceneMemberID="viewController">
-                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="Lq0-x9-Ocp">
+                    <view key="view" autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lq0-x9-Ocp">
                         <rect key="frame" x="0.0" y="0.0" width="753" height="312"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAX-5F-0Uy">
-                                <rect key="frame" x="32" y="40" width="689" height="248"/>
+                                <rect key="frame" x="32" y="32" width="689" height="248"/>
                                 <subviews>
                                     <textField hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7e6-wK-wsY">
                                         <rect key="frame" x="-2" y="232" width="693" height="16"/>
@@ -2095,9 +2091,11 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="XAX-5F-0Uy" firstAttribute="centerX" secondItem="Lq0-x9-Ocp" secondAttribute="centerX" id="318-Uo-hej"/>
-                            <constraint firstItem="XAX-5F-0Uy" firstAttribute="top" secondItem="Lq0-x9-Ocp" secondAttribute="top" constant="24" id="JbX-ug-8G1"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="bottom" priority="990" constant="40" id="Zkf-I7-0pO"/>
+                            <constraint firstItem="XAX-5F-0Uy" firstAttribute="top" secondItem="Lq0-x9-Ocp" secondAttribute="top" constant="32" id="JbX-ug-8G1"/>
+                            <constraint firstAttribute="trailing" secondItem="XAX-5F-0Uy" secondAttribute="trailing" constant="32" placeholder="YES" id="KrU-0N-OL6"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="bottom" priority="990" constant="32" id="Zkf-I7-0pO"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XAX-5F-0Uy" secondAttribute="trailing" priority="990" constant="32" id="jFp-sE-QzI"/>
+                            <constraint firstAttribute="bottom" secondItem="XAX-5F-0Uy" secondAttribute="bottom" constant="32" placeholder="YES" id="lcJ-4F-NO0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2130,7 +2128,7 @@
                 </viewController>
                 <customObject id="OXi-NQ-hGZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612.5" y="535"/>
+            <point key="canvasLocation" x="614" y="385"/>
         </scene>
     </scenes>
 </document>

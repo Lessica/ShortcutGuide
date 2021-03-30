@@ -12,8 +12,6 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
 
     @IBOutlet weak var visualEffectView: NSVisualEffectView!
     @IBOutlet weak var pageControl: ShortcutGuidePageControl!
-    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
 
     var items: [ShortcutItem]?
     var groups: [ShortcutItemGroup]? { arrangedObjects as? [ShortcutItemGroup] }
@@ -63,7 +61,7 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
         if let window = view.window, let screen = parent?.screen ?? window.screen {
             let xPos = screen.frame.minX + screen.frame.width / 2.0 - window.frame.width / 2.0
             let yPos = screen.frame.minY + screen.frame.height / 2.0 - window.frame.height / 2.0
-            window.setFrame(NSRect(x: xPos, y: yPos, width: window.frame.width, height: window.frame.height), display: true)
+            window.setFrame(NSRect(x: xPos, y: yPos, width: window.frame.width, height: window.frame.height), display: false)
         }
     }
 
@@ -115,13 +113,6 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
             ]
             NSLayoutConstraint.activate(constraints)
             pageConstraints = constraints
-        }
-        if !isSinglePage && columnStyle == .single {
-            widthConstraint.priority = .defaultHigh
-            heightConstraint.priority = .defaultHigh
-        } else {
-            widthConstraint.priority = .defaultLow
-            heightConstraint.priority = .defaultLow
         }
     }
 
