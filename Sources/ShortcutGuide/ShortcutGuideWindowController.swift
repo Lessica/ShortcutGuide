@@ -131,7 +131,7 @@ public class ShortcutGuideWindowController: NSWindowController {
     private func commandPressed(with event: NSEvent?) -> Bool {
         guard let eventWindow = event?.window else { return false }
         let now = event?.timestamp ?? Date().timeIntervalSinceReferenceDate
-        if now - lastCommandPressedAt < 0.6 {
+        if now - lastCommandPressedAt < 0.4 {
             ShortcutGuideWindowController.shared
                 .loadItemsForWindow(eventWindow)
             ShortcutGuideWindowController.shared
