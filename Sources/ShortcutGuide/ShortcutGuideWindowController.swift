@@ -115,7 +115,11 @@ public class ShortcutGuideWindowController: NSWindowController {
         }) else {
             fatalError("fail to add local monitor")
         }
-        let closingSubscription = NotificationCenter.default.observe(name: NSWindow.willCloseNotification, object: extWindow, eventMonitors: [eventMonitor]) { [weak self] notification in
+        let closingSubscription = NotificationCenter.default.observe(
+            name: NSWindow.willCloseNotification,
+            object: extWindow,
+            eventMonitors: [eventMonitor]
+        ) { [weak self] notification in
             guard let window = notification.object as? NSWindow else { return }
             self?.managedWindows.removeAll(where: { $0.window == window })
         }
