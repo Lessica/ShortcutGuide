@@ -69,6 +69,13 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
         super.awakeFromNib()
         delegate = self
         transitionStyle = .horizontalStrip
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        pageControl.target = self
+        pageControl.action = #selector(navigateWithPageControl(_:))
 
         visualEffectView.blendingMode = .behindWindow
         if #available(OSX 10.14, *) {
@@ -84,13 +91,6 @@ internal class ShortcutGuidePageController: NSPageController, NSPageControllerDe
         view.wantsLayer = false
         view.window?.contentView = visualEffectView
         view.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        pageControl.target = self
-        pageControl.action = #selector(navigateWithPageControl(_:))
     }
 
     override func viewDidLayout() {
